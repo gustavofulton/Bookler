@@ -15,10 +15,8 @@ import firebase from 'firebase';
 })
 export class SellPage {
   user = firebase.auth().currentUser;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SellPage');
+  constructor(public nav: NavController, public navParams: NavParams) {
+    console.log(this.nav.length());
   }
 
 }

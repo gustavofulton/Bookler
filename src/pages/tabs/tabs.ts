@@ -17,7 +17,8 @@ export class TabsPage {
   tab3Root: any = ContactPage;
 
   constructor(public nav: NavController) {
-    // console.log(this.nav.length());
+    console.log(this.nav.length());
+    // console.log();
     // this.nav.popToRoot();
   }
 }

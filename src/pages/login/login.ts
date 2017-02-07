@@ -7,6 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
+import { App } from 'ionic-angular';
 // import { ResetPasswordPage } from '../reset-password/reset-password';
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginPage {
   submitAttempt: boolean = false;
   loading: any;
 
-  constructor(public nav: NavController, public authData: AuthData, public formBuilder: FormBuilder,
+  constructor(private _app: App, public nav: NavController, public authData: AuthData, public formBuilder: FormBuilder,
     public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
 
     /**
@@ -58,10 +59,9 @@ export class LoginPage {
       console.log(this.loginForm.value);
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
+        this._app.getRootNav().setRoot(TabsPage);
         // this.nav.push(TabsPage);
-        this.nav.push(TabsPage);
-        console.log(this.nav.length());
-        // this.nav.pop();
+        // this.loading.dismiss();
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({
@@ -79,6 +79,7 @@ export class LoginPage {
 
       this.loading = this.loadingCtrl.create({
         dismissOnPageChange: true,
+        content: 'Logging in...'
       });
       this.loading.present();
     }

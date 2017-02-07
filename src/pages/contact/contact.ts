@@ -18,9 +18,8 @@ export class ContactPage {
   }
   logoutUser() {
     this.authData.logoutUser().then( () => {
-      const root = this._app.getRootNav();
+      this._app.getRootNav().setRoot(LoginPage);
       // root.rootPage = LoginPage;
-      root.setRoot(LoginPage);
       // this.rootPage = LoginPage;
       // console.log(this.nav.length());
       // this.nav.setRoot(LoginPage);

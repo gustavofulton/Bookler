@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, NavController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { LoginPage } from '../pages/login/login';
@@ -14,6 +14,7 @@ import firebase from 'firebase';
 export class MyApp {
   rootPage: any;
   zone: NgZone;
+
 
   constructor(platform: Platform) {
     firebase.initializeApp({
@@ -30,8 +31,10 @@ export class MyApp {
         this.zone.run( () => {
           if (!user) {
             this.rootPage = LoginPage;
+            // this.nav.setRoot(LoginPage);
             unsubscribe();
           } else {
+            // this.nav.setRoot(TabsPage);
             this.rootPage = TabsPage;
             unsubscribe();
           }

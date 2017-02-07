@@ -13,10 +13,8 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class BuyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BuyPage');
+  constructor(public nav: NavController, public navParams: NavParams) {
+    console.log(this.nav.length());
   }
 
 }
