@@ -12,7 +12,7 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any;
+  rootPage: any = TabsPage;
   zone: NgZone;
 
 
@@ -25,23 +25,15 @@ export class MyApp {
       messagingSenderId: "1062030417489"
     });
 
+
+    firebase.auth().onAuthStateChanged( user => {
+      if (!user) {
+        this.rootPage = LoginPage;
+        console.log("There's not a logged in user!");
+      }
+    });
+
     platform.ready().then(() => {
-      this.zone = new NgZone({});
-      const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-        this.zone.run( () => {
-          if (!user) {
-            this.rootPage = LoginPage;
-            // this.nav.setRoot(LoginPage);
-            unsubscribe();
-          } else {
-            // this.nav.setRoot(TabsPage);
-            this.rootPage = TabsPage;
-            unsubscribe();
-          }
-        });
-      });
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
     });

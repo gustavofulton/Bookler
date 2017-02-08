@@ -60,8 +60,10 @@ export class LoginPage {
       console.log(this.loginForm.value);
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
+
         // this._app.getRootNav().setRoot(TabsPage);
-        this.nav.push(ChoosecolPage);
+        // console.log(this._app.getRootNav());
+        this.nav.push(TabsPage);
         // this.loading.dismiss();
       }, error => {
         this.loading.dismiss().then( () => {
