@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import { TabsPage } from '../tabs/tabs';
+import {ChoosecolPage} from '../choosecol/choosecol'
 
 @Component({
   selector: 'page-signup',
@@ -48,7 +49,7 @@ export class SignupPage {
       console.log(this.signupForm.value);
     } else {
       this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.firstName, this.signupForm.value.lastName, this.signupForm.value.password).then(() => {
-        this.nav.push(TabsPage);
+        this.nav.push(ChoosecolPage);
       }, (error) => {
         this.loading.dismiss();
         let alert = this.alertCtrl.create({

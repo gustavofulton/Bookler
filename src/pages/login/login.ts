@@ -8,6 +8,7 @@ import { AuthData } from '../../providers/auth-data';
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
 import { App } from 'ionic-angular';
+import {ChoosecolPage} from '../choosecol/choosecol'
 // import { ResetPasswordPage } from '../reset-password/reset-password';
 
 @Component({
@@ -59,8 +60,8 @@ export class LoginPage {
       console.log(this.loginForm.value);
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
-        this._app.getRootNav().setRoot(TabsPage);
-        // this.nav.push(TabsPage);
+        // this._app.getRootNav().setRoot(TabsPage);
+        this.nav.push(ChoosecolPage);
         // this.loading.dismiss();
       }, error => {
         this.loading.dismiss().then( () => {

@@ -5,19 +5,29 @@ import { SellPage } from '../sell/sell';
 import { BuyPage } from '../buy/buy';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
+import { ChoosecolPage } from '../choosecol/choosecol';
+
+import firebase from 'firebase';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+  user = firebase.auth().currentUser;
   // this tells the tabs component which Pages
   // should be each tab's root Page
   tab1Root: any = SellPage;
-  tab2Root: any = BuyPage;
+  tab2Root: any = ChoosecolPage;
   tab3Root: any = ContactPage;
 
   constructor(public nav: NavController) {
-    console.log(this.nav.length());
+    if (this.user!=null) {
+      console.log(this.user.uid);
+      firebase.database().ref('users/'+this.user.uid).on('value', function(snapshot){
+          console.log(snapshot.val().school);
+      });
+    }
+    // console.log(this.nav.length());
     // console.log();
     // this.nav.popToRoot();
   }

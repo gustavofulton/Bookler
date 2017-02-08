@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { AuthData } from '../providers/auth-data';
+import { ChoosecolPage } from '../pages/choosecol/choosecol'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthData } from '../providers/auth-data';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ChoosecolPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +38,8 @@ import { AuthData } from '../providers/auth-data';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ChoosecolPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthData]
 })

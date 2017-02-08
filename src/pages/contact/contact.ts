@@ -13,9 +13,10 @@ import firebase from 'firebase';
 })
 export class ContactPage {
   user = firebase.auth().currentUser;
-  constructor(private _app: App, public nav: NavController, private authData: AuthData) {
 
+  constructor(private _app: App, public nav: NavController, private authData: AuthData) {
   }
+
   logoutUser() {
     this.authData.logoutUser().then( () => {
       this._app.getRootNav().setRoot(LoginPage);
