@@ -11,6 +11,8 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { AuthData } from '../providers/auth-data';
 import { ChoosecolPage } from '../pages/choosecol/choosecol'
+import { MessagePage } from '../pages/message/message';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ChoosecolPage } from '../pages/choosecol/choosecol'
     ContactPage,
     HomePage,
     TabsPage,
+    MessagePage,
+    ProfilePage,
     ChoosecolPage
   ],
   imports: [
@@ -39,6 +43,8 @@ import { ChoosecolPage } from '../pages/choosecol/choosecol'
     ContactPage,
     HomePage,
     TabsPage,
+    MessagePage,
+    ProfilePage,
     ChoosecolPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthData]

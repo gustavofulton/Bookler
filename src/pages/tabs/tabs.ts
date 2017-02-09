@@ -4,7 +4,8 @@ import { NavController } from 'ionic-angular';
 import { SellPage } from '../sell/sell';
 import { BuyPage } from '../buy/buy';
 import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+import { MessagePage } from '../message/message';
+import { ProfilePage } from '../profile/profile';
 import { ChoosecolPage } from '../choosecol/choosecol';
 
 import firebase from 'firebase';
@@ -17,8 +18,9 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   tab1Root: any = SellPage;
-  tab2Root: any = ChoosecolPage;
-  tab3Root: any = ContactPage;
+  tab2Root: any = BuyPage;
+  tab3Root: any = MessagePage;
+  tab4Root: any = ProfilePage;
 
   constructor(public nav: NavController) {
     if (this.user!=null) {
