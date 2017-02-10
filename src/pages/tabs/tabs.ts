@@ -10,6 +10,11 @@ import { ChoosecolPage } from '../choosecol/choosecol';
 
 import firebase from 'firebase';
 
+import { Tab1Root } from '../pages';
+import { Tab2Root } from '../pages';
+import { Tab3Root } from '../pages';
+import { Tab4Root } from '../pages';
+
 @Component({
   templateUrl: 'tabs.html'
 })
@@ -17,10 +22,10 @@ export class TabsPage {
   user = firebase.auth().currentUser;
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  tab1Root: any = SellPage;
-  tab2Root: any = BuyPage;
-  tab3Root: any = MessagePage;
-  tab4Root: any = ProfilePage;
+  tab1Root: any = Tab1Root;
+  tab2Root: any = Tab2Root;
+  tab3Root: any = Tab3Root;
+  tab4Root: any = Tab4Root;
 
   constructor(public nav: NavController) {
     if (this.user!=null) {

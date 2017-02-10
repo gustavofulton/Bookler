@@ -13,6 +13,7 @@ import { AuthData } from '../providers/auth-data';
 import { ChoosecolPage } from '../pages/choosecol/choosecol'
 import { MessagePage } from '../pages/message/message';
 import { ProfilePage } from '../pages/profile/profile';
+import { SettingsPage } from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProfilePage } from '../pages/profile/profile';
     TabsPage,
     MessagePage,
     ProfilePage,
+    SettingsPage,
     ChoosecolPage
   ],
   imports: [
@@ -45,6 +47,7 @@ import { ProfilePage } from '../pages/profile/profile';
     TabsPage,
     MessagePage,
     ProfilePage,
+    SettingsPage,
     ChoosecolPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthData]

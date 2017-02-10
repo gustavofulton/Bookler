@@ -10,6 +10,7 @@ import { TabsPage } from '../tabs/tabs';
 import { App } from 'ionic-angular';
 import {ChoosecolPage} from '../choosecol/choosecol'
 // import { ResetPasswordPage } from '../reset-password/reset-password';
+import { MainPage } from '../../pages/pages';
 
 @Component({
   selector: 'page-login',

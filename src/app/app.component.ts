@@ -1,5 +1,5 @@
-import { Component, NgZone } from '@angular/core';
-import { Platform, NavController } from 'ionic-angular';
+import { Component, ViewChild, NgZone } from '@angular/core';
+import { Platform, Nav, NavController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { LoginPage } from '../pages/login/login';
@@ -12,10 +12,12 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = TabsPage;
+  rootPage: any;
+
+
+  @ViewChild(Nav) nav: Nav;
+
   zone: NgZone;
-
-
   constructor(platform: Platform) {
     firebase.initializeApp({
       apiKey: "AIzaSyAzOR2Ky-BMBR8GsfyNaqsH8BCaemuu43k",
@@ -24,13 +26,36 @@ export class MyApp {
       storageBucket: "bookler-45168.appspot.com",
       messagingSenderId: "1062030417489"
     });
+    // let maybeUser = firebase.auth().currentUser;
+    // let credential;
+    // if (maybeUser) {
+    //   maybeUser.reauthenticate(credential).then(function() {
+    //       // User re-authenticated.
+    //       console.log("success");
+    //     }, function(error) {
+    //       console.log("error");
+    //       // An error happened.
+    //   });
+    // }
 
 
+    // console.log(maybeUser);
+    // if (!maybeUser) {
+    //   this.rootPage = LoginPage;
+    // } else {
+    //   this.rootPage = TabsPage;
+    // }
+
+    this.zone = new NgZone({});
     firebase.auth().onAuthStateChanged( user => {
-      if (!user) {
-        this.rootPage = LoginPage;
-        console.log("There's not a logged in user!");
-      }
+      this.zone.run( () => {
+        if (!user) {
+          this.rootPage = LoginPage;
+          console.log("There's not a logged in user!");
+        } else {
+          this.rootPage = TabsPage;
+        }
+      });
     });
 
     platform.ready().then(() => {
