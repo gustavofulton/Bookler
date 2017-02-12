@@ -8,14 +8,29 @@
 
   <ion-navbar hideBackButton>
     <ion-title>Sell your Books</ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-left color="black" (click)="goSettings()">
+        <ion-icon name="add" ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list-header>
-    You don't have any books yet!
+<ion-content>
+  <ion-list-header class="header">
+    Here are the books you are selling!
   </ion-list-header>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img class="profileImg" src="https://scontent.xx.fbcdn.net/v/t31.0-8/12138491_10206784856473320_5648851967370717791_o.jpg?oh=f2a03f734d7b4511825b2431b55d5b7d&oe=590AB56C" />
+      </ion-thumbnail>
+      <h2>CSE 231: Introduction to Programming I</h2>
+      <p>The Practice of Computing using Python, 3rd Ed. by Punch and Enbody.</p>
+      <button ion-button clear item-right>View</button>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

@@ -109,7 +109,8 @@ export class ChoosecolPage {
   schoolSelected(school) {
     let database = firebase.database().ref('/users').child(this.user.uid);
     database.update({school: school});
-    this._app.getRootNav().setRoot(TabsPage);
+    // this._app.getRootNav().setRoot(TabsPage);
+    this.nav.push(TabsPage);
   }
 
 }

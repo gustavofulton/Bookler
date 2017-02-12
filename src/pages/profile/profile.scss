@@ -1,7 +1,9 @@
 page-profile {
   .toolbar-background {
     // background-color: #3d7ea9;
-    // background: none;
+    background: #FFEEDB;
+    // background: linear-gradient(to bottom,  #006E90, #006);
+    // border-bottom: 0px !important;
   }
 
   .profileImg {
@@ -12,15 +14,16 @@ page-profile {
   .home {
     text-align: center;
     margin-top: 10%;
-    color: white;
-    background: linear-gradient(to bottom,  #2b5876, #4e4376);
+    color: black;
+    // background: linear-gradient(to bottom,  #006E90, #ffffff);
+    background: #006E90;
   }
   .name {
-    color: white;
+    color: black;
     font-size: 1.5em;
   }
   .school {
-    color: white;
+    color: black;
     font-size: 1em;
   }
 
