@@ -18,19 +18,19 @@
   <ion-list>
     <ion-item>
       <ion-label fixed>Class</ion-label>
-      <ion-input value="CSE 231: Introduction to Programming I"></ion-input>
+      <ion-input value="{{book.class}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>Name</ion-label>
-      <ion-input value="The Practice of Computing using Python"></ion-input>
+      <ion-input value="{{book.name}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>Author</ion-label>
-      <ion-input value="Punch and Enbody"></ion-input>
+      <ion-input value="{{book.author}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>Edition</ion-label>
-      <ion-input value="3rd"></ion-input>
+      <ion-input value="{{book.edition}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label fixed>ISBN</ion-label>
@@ -38,7 +38,7 @@
     </ion-item>
     <ion-item>
       <ion-label fixed>Price</ion-label>
-      <ion-input id="price" value="$20"></ion-input>
+      <ion-input id="price" value="${{book.price}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Willing to Negotiate</ion-label>

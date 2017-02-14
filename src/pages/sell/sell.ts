@@ -16,22 +16,24 @@ import firebase from 'firebase';
   templateUrl: 'sell.html'
 })
 export class SellPage {
-  books: any[];
+  books: any[] = [];
   user = firebase.auth().currentUser;
   ref = firebase.database().ref('/users').child(this.user.uid).child("sellingBooks");
 
   constructor(public nav: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     this.ref.once("value", (snapshot) => {
+      this.books = [];
       // let ref2 = this.ref.child("CSE 231");
       snapshot.forEach((childSnapshot) => {
-          console.log(JSON.stringify(childSnapshot.val()));
-          // this.books.push({
+          // console.log(JSON.stringify(childSnapshot.val()));
+          this.books.push(
+            childSnapshot.val()
           //   author: childSnapshot.val().author,
           //   class: childSnapshot.val().class,
           //   edition: childSnapshot.val().edition,
           //   name: childSnapshot.val().name,
           //   price: childSnapshot.val().price
-          // });
+          );
           return false;
       });
       // this.ref2.on("value", function(snapshot2) {
@@ -44,6 +46,35 @@ export class SellPage {
     });
   }
 
+  loadValues() {
+    this.ref.on("value", (snapshot) => {
+      this.books = [];
+      // let ref2 = this.ref.child("CSE 231");
+      snapshot.forEach((childSnapshot) => {
+          // console.log(JSON.stringify(childSnapshot.val()));
+          this.books.push(
+            childSnapshot.val()
+          //   author: childSnapshot.val().author,
+          //   class: childSnapshot.val().class,
+          //   edition: childSnapshot.val().edition,
+          //   name: childSnapshot.val().name,
+          //   price: childSnapshot.val().price
+          );
+          return false;
+      });
+      // this.ref2.on("value", function(snapshot2) {
+        // console.log(JSON.stringify(snapshot.val()));
+      // });
+      // this.books.push(snapshot.val().name);
+
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+  }
+  ionViewDidLoad() {
+      this.loadValues();
+  }
+
   addSellingBook() {
     let addModal = this.modalCtrl.create(SellCreatePage);
     addModal.onDidDismiss(item => {
@@ -53,8 +84,8 @@ export class SellPage {
   }
 
 
-  openItem() {
-    this.nav.push(SellDetailPage);
+  openItem(book) {
+    this.nav.push(SellDetailPage, {book: book});
   }
 
 }

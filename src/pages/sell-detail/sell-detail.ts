@@ -12,8 +12,12 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'sell-detail.html'
 })
 export class SellDetailPage {
+  book: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.book = navParams.get('book');
+    console.log(this.book);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SellDetailPage');
