@@ -3,6 +3,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { SellPage } from '../pages/sell/sell';
+import { SellDetailPage } from '../pages/sell-detail/sell-detail';
+import { SellCreatePage } from '../pages/sell-create/sell-create';
 import { BuyPage } from '../pages/buy/buy';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -21,6 +23,8 @@ import { SettingsPage } from '../pages/settings/settings';
     LoginPage,
     SignupPage,
     SellPage,
+    SellDetailPage,
+    SellCreatePage,
     BuyPage,
     AboutPage,
     ContactPage,
@@ -40,6 +44,8 @@ import { SettingsPage } from '../pages/settings/settings';
     LoginPage,
     SignupPage,
     SellPage,
+    SellDetailPage,
+    SellCreatePage,
     BuyPage,
     AboutPage,
     ContactPage,
