@@ -26,15 +26,23 @@
     You don't have any books selling yet!
   </ion-list-header>
   <ion-list>
-    <ion-item *ngFor="let book of books">
-      <ion-thumbnail item-left>
-        <img class="profileImg" src="https://scontent.xx.fbcdn.net/v/t31.0-8/12138491_10206784856473320_5648851967370717791_o.jpg?oh=f2a03f734d7b4511825b2431b55d5b7d&oe=590AB56C" />
-      </ion-thumbnail>
-      <h2>{{book.class}}</h2>
-      <p>{{book.name}}</p>
-      <p class="price">${{book.price}}</p>
-      <button ion-button clear item-right (click)="openItem(book)">View</button>
-    </ion-item>
+    <ion-item-sliding *ngFor="let book of books">
+      <ion-item >
+        <ion-thumbnail item-left>
+          <img class="profileImg" src="https://scontent.xx.fbcdn.net/v/t31.0-8/12138491_10206784856473320_5648851967370717791_o.jpg?oh=f2a03f734d7b4511825b2431b55d5b7d&oe=590AB56C" />
+        </ion-thumbnail>
+        <h2>{{book.class}}</h2>
+        <p>{{book.name}}</p>
+        <p class="price">${{book.price}}</p>
+        <button ion-button clear item-right (click)="openItem(book)">View</button>
+      </ion-item>
+      <ion-item-options class="delete" side="right">
+        <button ion-button color="danger" (click)="deleteBook(book)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
 </ion-content>

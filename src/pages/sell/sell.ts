@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { SellDetailPage } from '../sell-detail/sell-detail';
 import { SellCreatePage } from '../sell-create/sell-create';
 
@@ -20,27 +20,17 @@ export class SellPage {
   user = firebase.auth().currentUser;
   ref = firebase.database().ref('/users').child(this.user.uid).child("sellingBooks");
 
-  constructor(public nav: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public nav: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController) {
     this.ref.once("value", (snapshot) => {
       this.books = [];
-      // let ref2 = this.ref.child("CSE 231");
       snapshot.forEach((childSnapshot) => {
-          // console.log(JSON.stringify(childSnapshot.val()));
+        let tempVal = childSnapshot.val();
+        tempVal.id = childSnapshot.key;
           this.books.push(
-            childSnapshot.val()
-          //   author: childSnapshot.val().author,
-          //   class: childSnapshot.val().class,
-          //   edition: childSnapshot.val().edition,
-          //   name: childSnapshot.val().name,
-          //   price: childSnapshot.val().price
+            tempVal
           );
           return false;
       });
-      // this.ref2.on("value", function(snapshot2) {
-        // console.log(JSON.stringify(snapshot.val()));
-      // });
-      // this.books.push(snapshot.val().name);
-
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
@@ -49,30 +39,45 @@ export class SellPage {
   loadValues() {
     this.ref.on("value", (snapshot) => {
       this.books = [];
-      // let ref2 = this.ref.child("CSE 231");
       snapshot.forEach((childSnapshot) => {
-          // console.log(JSON.stringify(childSnapshot.val()));
+        let tempVal = childSnapshot.val();
+        tempVal.id = childSnapshot.key;
+        // console.log(tempVal);
           this.books.push(
-            childSnapshot.val()
-          //   author: childSnapshot.val().author,
-          //   class: childSnapshot.val().class,
-          //   edition: childSnapshot.val().edition,
-          //   name: childSnapshot.val().name,
-          //   price: childSnapshot.val().price
+            tempVal
           );
           return false;
       });
-      // this.ref2.on("value", function(snapshot2) {
-        // console.log(JSON.stringify(snapshot.val()));
-      // });
-      // this.books.push(snapshot.val().name);
-
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
   }
+
   ionViewDidLoad() {
       this.loadValues();
+  }
+
+  deleteBook(book) {
+    let confirm = this.alertCtrl.create({
+      title: 'Confirm',
+      message: "Are you sure you want to delete this book? This action can't be undone",
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            console.log('Agree clicked');
+            this.ref.child(book.id).remove();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   addSellingBook() {

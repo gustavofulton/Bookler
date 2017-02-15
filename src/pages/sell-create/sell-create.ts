@@ -29,6 +29,7 @@ export class SellCreatePage {
       author: [''],
       edition: [''],
       price: ['', Validators.required],
+      negotiate: true
     });
 
     // Watch the form for changes, and
@@ -51,7 +52,8 @@ export class SellCreatePage {
       name: this.form.value.name,
       author: this.form.value.author,
       edition: this.form.value.edition,
-      price: this.form.value.price
+      price: this.form.value.price,
+      negotiate: this.form.value.negotiate
     });
     this.viewCtrl.dismiss(this.form.value);
   }
