@@ -21,7 +21,7 @@ export class SellPage {
   ref = firebase.database().ref('/users').child(this.user.uid).child("sellingBooks");
 
   constructor(public nav: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController) {
-    this.ref.once("value", (snapshot) => {
+    this.ref.orderByChild("class").once("value", (snapshot) => {
       this.books = [];
       snapshot.forEach((childSnapshot) => {
         let tempVal = childSnapshot.val();
@@ -37,7 +37,7 @@ export class SellPage {
   }
 
   loadValues() {
-    this.ref.on("value", (snapshot) => {
+    this.ref.orderByChild("class").on("value", (snapshot) => {
       this.books = [];
       snapshot.forEach((childSnapshot) => {
         let tempVal = childSnapshot.val();

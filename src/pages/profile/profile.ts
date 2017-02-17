@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { SettingsPage} from '../settings/settings'
 import firebase from 'firebase';
 
+
 /*
   Generated class for the Profile page.
 

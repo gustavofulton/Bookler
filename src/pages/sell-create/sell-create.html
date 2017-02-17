@@ -37,20 +37,25 @@
     </div> -->
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="Class" formControlName="classCode"></ion-input>
+        <ion-label floating>Class</ion-label>
+        <ion-input type="text" formControlName="classCode"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Name" formControlName="name"></ion-input>
+        <ion-label floating>Book Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Author" formControlName="author"></ion-input>
+        <ion-label floating>Author</ion-label>
+        <ion-input type="text" formControlName="author"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Edition" formControlName="edition"></ion-input>
+        <ion-label floating>Edition</ion-label>
+        <ion-input type="text"  formControlName="edition"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="number" placeholder="Price" formControlName="price"></ion-input>
-      </ion-item>
+        <ion-label floating>Price</ion-label>
+        <ion-input type="number" formControlName="price"></ion-input>
+      </ion-item><br>
       <ion-item>
         <ion-label>Willing to Negotiate</ion-label>
         <ion-toggle formControlName="negotiate" checked="true" ></ion-toggle>
